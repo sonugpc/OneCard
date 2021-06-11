@@ -1,1 +1,108 @@
-<app-header></app-header>
+<div class="top-pane">
+  <app-header></app-header>
+
+  <app-header *ngIf="isSticky" [ngClass]="{'sticky_head':isSticky}"></app-header>
+  <div class="h-full mt-24 flex">
+    <div class="left-section relative">
+      <h2>We make it Super Simple</h2>
+      <img class="img-hands" src="assets/collect_img-video.png" />
+      <div class="dots"></div>
+    </div>
+    <!-- ... -->
+    <div class="right-section"> <div class="wrapper flex">
+      <div class="dots2"></div>
+
+    
+      <div class="calculator">
+        <div class="title text-center h-10 font-bold text-xl"><h2 >Eligibility Calculator</h2></div>
+        <div class="mt-10" id="m_income">
+          <p class="text-gray-900 text-sm">Monthly Income</p>
+          <p class="text-2xl text-black font-bold"> {{formValues.income|currency:'INR'}}</p>
+          <mat-slider class="w-full" color="primary" min="30000" max="300000"  [(ngModel)]="formValues.income"></mat-slider>
+          <div class="flex -mt-4 mb-4 justify-between text-gray-600 text-xs"><span>₹100,000</span><span>₹300,000</span></div>
+        </div>
+        <div class="mt-10" id="m_expence">
+          <p class="text-gray-900 text-sm">Monthly Expence</p>
+          <p class="text-2xl text-black font-bold"> {{formValues.expence|currency:'INR'}}</p>
+          <mat-slider color="primary" class="w-full"  min="30000" max="300000"  [(ngModel)]="formValues.expence"></mat-slider>
+          <!-- <div class="flex -mt-4 mb-4 justify-between text-gray-600 text-xs"><span>₹30,000</span><span>₹300,000</span></div> -->
+        </div>
+        <div  class="mt-10" id="r_ten">
+          <select class="w-full">
+            <option>6 Months</option>
+            <option>12 Months</option>
+
+          </select>
+        </div>
+        <div id="e_lon" class="justify-between mt-4 flex">
+          <label>Do You have an Exisiting Loan</label>
+          <mat-slide-toggle color="primary" class="ml-2"></mat-slide-toggle>
+
+        </div>
+        <div id="emi">
+          <mat-form-field class="w-full mt-10">
+            <mat-label>EMI of Exicing Loan Amount </mat-label>
+            <!-- <span matPrefix>₹</span> -->
+            <input matInput placeholder="" [value]="'5000'|currency:'INR'">
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="quotecard flex"> 
+        <div class="q_card text-center">
+            <div class="la  justify-center ali">
+              <span>Loan Amount</span>
+              <h1 class="amount">{{'100000'|currency:'INR'}}</h1>
+            </div>
+            <div class="emi">
+              <span>Your EMI will be</span>
+              <h1 class="amount">{{'15000'|currency:'INR'}}</h1>
+            </div>
+            <div>
+              <button class="get_m_btn  getStarted">GET MONEY</button>
+            </div>
+        </div>
+      </div>
+    
+    </div>
+   
+    </div>
+  </div>
+</div>
+<div class="bottom-pane mt-10">
+  <div class=" flex h-full w-full">
+    <div class="bottom-left flex">
+
+      <div>
+        <div *ngFor="let item of cardsList" class="card">
+          <img [src]="item.logo" alt="" />
+          <h3>
+            {{item.title}}
+          </h3>
+          <p>{{item.capation}}</p>
+
+        </div>
+
+      </div>
+      <div class="left-column-right-part">
+        <div *ngFor="let i of cardList2" class="card">
+          <img [src]="i.logo" alt="" />
+          <h3>
+            {{i.title}}
+          </h3>
+          <p>{{i.capation}}</p>
+
+        </div>
+
+      </div>
+      <div class="small-appear"></div>
+    </div>
+    <!-- ... -->
+    <div class="bottom-right">
+      <h2>Boost your business with Open</h2>
+      <p class="mt-7 w-7/12">Get your hands on a term loan that’s crafted for your business</p>
+      <button style="margin-left: 0;" class="outline-btn">Get an Open Account</button>
+    </div>
+
+
+  </div>
+</div>
